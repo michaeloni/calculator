@@ -1,0 +1,176 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 100vh;
+    width: 100%;
+    background: #251e3e;
+    display: flex;
+    align-items: center;
+    color: white;
+    justify-content: center;
+    font-size: 25px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+main{
+    background: #051e3e;
+    box-shadow: 10px 10px #000000;
+    width: 560px;
+    height: 310px;
+    display: grid;
+    grid-template-areas: "operator numbers screen"
+                         "operator numbers screen"
+                         "operator numbers screen"
+                         "operator zeroE screen";
+    grid-gap: 1px;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 90px 300px 1fr;
+    transition: transform 0.5s, box-shadow 0.5s;
+
+}
+.button{
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+.button:hover{
+    opacity: 0.8;
+}
+
+.operators-container, .numbers-container, .zero-n-enter{
+    flex: 1;
+}
+
+.screen-n-clear{
+    flex: 2;
+}
+
+.operators-container {
+    grid-area: operator;
+    height: 10;
+    background: #451e3e;
+    display: grid;
+    grid-template-areas: "plus"
+                         "minus"
+                         "times"
+                         "divide";
+    justify-items: center;
+    align-items: center;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
+}
+
+.operator{
+    background: #051e3e;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+                        
+
+.numbers-container{
+    grid-area: numbers;
+    display: grid;
+    grid-template-areas: "one two three"
+                         "four five six"
+                         "seven eight nine";
+    grid-gap: 1px;
+    justify-items: center;
+    align-items: center;
+    background: #3a1934;
+}
+.numbers-container div.number{
+    background: #651e3e;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gap{
+    row-gap: 2px;
+}
+
+.zero-n-enter{
+    grid-area: zeroE;
+    display: grid;
+    grid-template-areas: "zero enter";
+    justify-items: center;
+    align-items: center;
+    grid-gap: 1px;
+    grid-template-rows: 1fr;
+    grid-template-columns: 2fr 1fr;
+}
+
+.zero{
+    grid-area: zero;
+    width: 100%;
+    height: 100%;
+    background: #451e3e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.enter{
+    grid-area: enter;
+    width: 100%;
+    height: 100%;
+    background: #451e3e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+.screen-n-clear{
+    grid-area: screen;
+    display: grid;
+    grid-template-areas: "screen"
+                         "typedin"
+                         "clear";
+    grid-gap: 1px;
+    grid-template-rows: 2fr 1fr 1fr;
+    grid-template-columns: 1fr;
+}
+
+.result-screen{
+    background: #851e3e;
+    grid-area: screen;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.typein-screen{
+    background: #851e3e;
+    grid-area: typedin;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: right;
+    padding-right: 14px;
+    align-items: center;
+}
+
+main:hover{
+    box-shadow: none;
+    transform: translateX(10px) translateY(10px);
+}
+
+.clear-button{
+    background: #451e3e;
+    grid-area: clear;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
