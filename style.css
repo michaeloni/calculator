@@ -3,6 +3,9 @@
     margin: 0;
     padding: 0;
 }
+
+::selection { background: transparent; } ::-moz-selection { background: transparent; }
+
 body{
     height: 100vh;
     width: 100%;
@@ -18,19 +21,24 @@ body{
 main{
     background: #051e3e;
     box-shadow: 10px 10px #000000;
-    width: 560px;
-    height: 310px;
+    width: 680px;
+    height: 390px;
     display: grid;
     grid-template-areas: "operator numbers screen"
-                         "operator numbers screen"
-                         "operator numbers screen"
-                         "operator zeroE screen";
+    "operator numbers screen"
+    "operator numbers screen"
+    "operator zeroE screen";
     grid-gap: 1px;
     grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-template-columns: 90px 300px 1fr;
+    grid-template-columns: 90px 300px 1.5fr;
     transition: transform 0.5s, box-shadow 0.5s;
-
 }
+
+main:hover{
+    box-shadow: none;
+    transform: translateX(10px) translateY(10px);
+}
+
 .button{
     cursor: pointer;
     transition: opacity 0.2s;
@@ -39,13 +47,6 @@ main{
     opacity: 0.8;
 }
 
-.operators-container, .numbers-container, .zero-n-enter{
-    flex: 1;
-}
-
-.screen-n-clear{
-    flex: 2;
-}
 
 .operators-container {
     grid-area: operator;
@@ -92,9 +93,6 @@ main{
     align-items: center;
 }
 
-.gap{
-    row-gap: 2px;
-}
 
 .zero-n-enter{
     grid-area: zeroE;
@@ -126,9 +124,6 @@ main{
     align-items: center;
 }
 
-
-
-
 .screen-n-clear{
     grid-area: screen;
     display: grid;
@@ -152,22 +147,35 @@ main{
 .typein-screen{
     background: #851e3e;
     grid-area: typedin;
+    box-sizing: content-box;
     display: flex;
     width: 100%;
     height: 100%;
     justify-content: flex-end;
-    padding-right: 14px;
     align-items: center;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    letter-spacing: 5px;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE 10+ */
 }
 
-main:hover{
-    box-shadow: none;
-    transform: translateX(10px) translateY(10px);
+.typein-screen::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* Chrome/Safari/Webkit */
 }
 
-.clear-button{
-    background: #451e3e;
+.back-n-clear{
+    display: grid;
+    grid-template-areas: "backspace clear";
     grid-area: clear;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 1px;
+}
+
+.clear-button, .back-button{
+    background: #451e3e;
     width: 100%;
     height: 100%;
     display: flex;
