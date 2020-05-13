@@ -73,7 +73,6 @@ function getCurrentOperator() {
 function enter(){
     if(typeinScreen.textContent.includes("=")){
         console.log(typeinScreen.textContent);
-        alert("oofff");
         typeinScreen.textContent += "=";
         typeinScreen.textContent = typeinScreen.textContent.replace(typeinScreen.textContent.slice(0, typeinScreen.textContent.indexOf("=") + 1), "");
         firstNumber = Number(typeinScreen.textContent.slice(0, typeinScreen.textContent.indexOf(getCurrentOperator())));
