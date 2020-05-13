@@ -15,13 +15,9 @@ let secondNumber = null;
 
 
 
+
 allNumbers.forEach(number => {
     number.addEventListener("click", () => {
-        if(firstNumber){
-            secondNumber = number.textContent;
-        }if(secondNumber){
-            secondNumber += number.textContent;
-        }
         if(typeinScreen.textContent == 0){
             typeinScreen.textContent = number.textContent;
         }
@@ -31,8 +27,12 @@ allNumbers.forEach(number => {
     })
 });
 
+
 operators.forEach(operator =>{
     operator.addEventListener("click", () => {
+        if(typeinScreen.textContent.includes("+") || typeinScreen.textContent.includes("÷") || typeinScreen.textContent.includes("-") || typeinScreen.textContent.includes("×")){
+            enter();
+        }
         currentOperator = operator.textContent;
         firstNumber = Number(typeinScreen.textContent);
         if(typeinScreen.textContent == 0){
@@ -46,41 +46,20 @@ operators.forEach(operator =>{
 
 
 
-// allButtons.forEach(button => {
-//     button.addEventListener("click", function(){
-//         operators.forEach(operator => {
-//             // if(getCurrentOperator())
-//             if(button.textContent == operator.textContent){
-//                 setCurrentOperator(operator.textContent);
-//                 console.log(getCurrentOperator());
-//             }
-//         });
-//         console.log(typeinScreen.textContent);
-
-
-//         if(button.textContent !== "←"){
-//             if(typeinScreen.textContent == 0){
-//                 typeinScreen.textContent = button.textContent;
-//             }
-//             else{
-//                 typeinScreen.textContent += button.textContent;
-//             }
-//             console.log(getCurrentOperator());
-//         }
-//     })
-// })
 
 function operate(firstNum, operator, secondNum){
     if(operator == "+"){
-
+        return firstNumber + secondNumber;
     }
     else if(operator == "-"){
-
+        return firstNumber - secondNumber;
     }
     else if(operator == "×"){
+        return firstNumber * secondNumber;
 
-    }else{
-        
+    }
+    else{
+        return firstNumber / secondNumber;
     }
 }
 function setCurrentOperator(operator){
@@ -89,6 +68,32 @@ function setCurrentOperator(operator){
 function getCurrentOperator() {
     return currentOperator;
 }
+
+/*****Enter*****/
+function enter(){
+    if(typeinScreen.textContent.includes("=")){
+        console.log(typeinScreen.textContent);
+        alert("oofff");
+        typeinScreen.textContent += "=";
+        typeinScreen.textContent = typeinScreen.textContent.replace(typeinScreen.textContent.slice(0, typeinScreen.textContent.indexOf("=") + 1), "");
+        firstNumber = Number(typeinScreen.textContent.slice(0, typeinScreen.textContent.indexOf(getCurrentOperator())));
+        secondNumber = Number(typeinScreen.textContent.slice(typeinScreen.textContent.indexOf(getCurrentOperator()) + 1, typeinScreen.textContent.indexOf("=")));
+        resultScreen.textContent = operate(firstNumber, getCurrentOperator(), secondNumber);
+        typeinScreen.textContent += resultScreen.textContent;
+        return;
+    }
+    if(typeinScreen.textContent == 0){
+        return;
+    }
+    else{
+        typeinScreen.textContent += "=";
+        secondNumber = Number(typeinScreen.textContent.slice(typeinScreen.textContent.indexOf(getCurrentOperator()) + 1, typeinScreen.textContent.indexOf("=")));
+        resultScreen.textContent = operate(firstNumber, getCurrentOperator(), secondNumber);
+        typeinScreen.textContent += resultScreen.textContent;
+    }
+}
+
+resultButton.addEventListener("click", enter);
 
 
 
