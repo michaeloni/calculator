@@ -128,7 +128,7 @@ main:hover{
     grid-area: screen;
     display: grid;
     grid-template-areas: "screen"
-                         "typedin"
+                         "screen"
                          "clear";
     grid-gap: 1px;
     grid-template-rows: 2fr 1fr 1fr;

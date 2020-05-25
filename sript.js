@@ -114,4 +114,4 @@ function back(){
     typeinScreen.textContent = typeinScreen.textContent.slice(0, typeinScreen.textContent.length - 1);
 }
 
-backButton.addEventListener("click", back)
+backButton.addEventListener("click", back);

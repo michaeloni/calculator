@@ -11,10 +11,10 @@
 <body>
     <main class="calculator-body">
         <div class="operators-container">
-            <div class="button operator">+</div>
-            <div class="button operator">-</div>
-            <div class="button operator">×</div>
-            <div class="button operator">÷</div>
+            <div class="button operator" data-action="add">+</div>
+            <div class="button operator" data-action="subtract">-</div>
+            <div class="button operator" data-action="multiply">×</div>
+            <div class="button operator" data-action="divide">÷</div>
         </div>
         <div class="numbers-container">
             <div class="button number top">1</div>
@@ -29,17 +29,16 @@
         </div>
         <div class="zero-n-enter">
             <div class="button number zero">0</div>
-            <div class="button enter">=</div>
+            <div class="button enter" data-action="calculate">=</div>
         </div>
         <div class="screen-n-clear">
             <div class="result-screen">0</div>
-            <div class="typein-screen">0</div>
             <div class="back-n-clear">
-                <div class="button back-button">←</div>
-                <div class="button clear-button">C</div>
+                <div class="button back-button" data-action="backspace">←</div>
+                <div class="button clear-button" data-action="clear">C</div>
             </div>
         </div>
     </main>
-    <script src="./sript.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
