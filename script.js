@@ -16,8 +16,7 @@ calculator.addEventListener('click', (e) => {
             }else{
                 resultScreen.textContent = displayedNum + keyContent;
             }
-            console.log('number key!');
-            calculator.dataset.previousKey = 'number';
+            calculator.dataset.previousKeyType = 'number';
         }
         
         if (
@@ -26,9 +25,6 @@ calculator.addEventListener('click', (e) => {
             action === 'multiply' ||
             action === 'divide'
           ) {
-              
-            console.log('operator key!');
-            
             const firstValue = calculator.dataset.firstValue;
             const operator = calculator.dataset.operator;
             const secondValue = displayedNum;
@@ -38,7 +34,6 @@ calculator.addEventListener('click', (e) => {
                 operator &&
                 previousKeyType === 'operator'
               ) {
-                console.log(operator)
                 const calcValue = calculate(firstValue, operator, secondValue)
                 resultScreen.textContent = calcValue;
                 
@@ -54,13 +49,11 @@ calculator.addEventListener('click', (e) => {
         }
         
         if (action === 'clear-entry') {
-            console.log('CE key!');
             resultScreen.textContent = 0;
             calculator.dataset.previousKey = 'clearEntry';
         }
 
         if (action === 'clear') {
-            console.log('clear key!');
             calculator.dataset.firstValue = '';
             calculator.dataset.modValue = '';
             calculator.dataset.operator = '';
@@ -73,7 +66,6 @@ calculator.addEventListener('click', (e) => {
             let firstValue = calculator.dataset.firstValue;
             const operator = calculator.dataset.operator;
             let secondValue = displayedNum;
-            console.log('equal key!');
             
             if (firstValue) {
                 if (previousKeyType === 'calculate') {
